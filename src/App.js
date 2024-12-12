@@ -1,23 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import Board from "./components/Board";
 
 function App() {
+  const [gameKey, setGameKey] = useState(0); // 用来重新渲染游戏
+
+  const resetGame = () => {
+    setGameKey(gameKey + 1);  // 每次点击重新开始游戏
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>五子棋游戏</h1>
+      <Board key={gameKey} size={15} /> {/* 传递棋盘尺寸 */}
     </div>
   );
 }
